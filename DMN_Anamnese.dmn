@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" id="definitions_1iigaw5" name="definitions" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="4.10.0">
+  <decision id="decision_1su1ox9" name="">
+    <decisionTable id="decisionTable_1w1irw9">
+      <input id="input1" label="Age">
+        <inputExpression id="inputExpression1" typeRef="integer">
+          <text>Age</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_0cxy5e0" label="Illness">
+        <inputExpression id="LiteralExpression_1xu60p7" typeRef="string">
+          <text>Illness</text>
+        </inputExpression>
+        <inputValues id="UnaryTests_1l4204r">
+          <text>"common cold","allergy","pain","sleeping disorders","urinary tract infection"</text>
+        </inputValues>
+      </input>
+      <input id="InputClause_0dovpe1" label="Symptoms">
+        <inputExpression id="LiteralExpression_0bo51xx" typeRef="string">
+          <text>Symptoms</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_0arhrnq" label="Red Flags">
+        <inputExpression id="LiteralExpression_1rkprjf" typeRef="string">
+          <text>RedFlags</text>
+        </inputExpression>
+      </input>
+      <output id="output1" label="" name="" typeRef="string" />
+      <rule id="DecisionRule_1h1u00m">
+        <inputEntry id="UnaryTests_02zm5dj">
+          <text>&lt; 18</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1hj7xjy">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0sq36nb">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_15msyeg">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_13ne2vg">
+          <text>see pharmacist</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0zh67co">
+        <inputEntry id="UnaryTests_0xbzy09">
+          <text>&gt;= 18</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_06yed02">
+          <text>common cold</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0shonly">
+          <text>Fever or joint pain</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0gecdpd">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1je98uj">
+          <text>fever</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_03ruj3k">
+        <inputEntry id="UnaryTests_0n0nq68">
+          <text>&gt;= 18</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_19x36cb">
+          <text>common cold</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_072p5kx">
+          <text>Fever or joint pain</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0rsuxbc">
+          <text>&gt;39°C for &gt;24 hours</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_01z4o0n">
+          <text>see pharmacist</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0obpvuu">
+        <inputEntry id="UnaryTests_1xxtwzt">
+          <text>&gt;= 18</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1cqkw7y">
+          <text>common cold</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0jrgwjy">
+          <text>Fever or joint pain</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_09mv0ml">
+          <text>chest pain</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1iufpw9">
+          <text>see pharmacist</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1dqmjwk">
+        <inputEntry id="UnaryTests_08evt1b">
+          <text>&gt;= 18</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0tndtz7">
+          <text>common cold</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_06j1kt9">
+          <text>Fever or joint pain</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0lmosl8">
+          <text>neck pain</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1osvveb">
+          <text>see pharmacist</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1qdr4qw">
+        <inputEntry id="UnaryTests_1c6phqs">
+          <text>&gt;= 18</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_023o5dy">
+          <text>common cold</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_16asdop">
+          <text>cough</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0biehns">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_07tuj3j">
+          <text>cough</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1sdbctb">
+        <inputEntry id="UnaryTests_1ss81vg">
+          <text>&gt;= 18</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0cv2eov">
+          <text>common cold</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0c426an">
+          <text>cough</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1sfjfl9">
+          <text>chest pain</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0ym560s">
+          <text>see pharmacist</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1bh4ngm">
+        <inputEntry id="UnaryTests_0r8y5zv">
+          <text>&gt;= 18</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0h38frx">
+          <text>common cold</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0ks83v2">
+          <text>cough</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_06jora0">
+          <text>blood in sputum</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0apst4a">
+          <text>see pharmacist</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1h7x6ro">
+        <inputEntry id="UnaryTests_16ki62y">
+          <text>&gt;= 18</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0mmbkn5">
+          <text>common cold</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1r5q78h">
+          <text>cough</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_19f7npl">
+          <text>&gt; 2 weeks</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_11pkpku">
+          <text>see pharmacist</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0zpf87s">
+        <inputEntry id="UnaryTests_1lhq09a">
+          <text>&gt;= 18</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0rx85ih">
+          <text>common cold</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0zfmf1l">
+          <text>rhinitis</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0ogtxiv">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0z5wtkb">
+          <text></text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_19f92dj">
+        <inputEntry id="UnaryTests_1xp7nm4">
+          <text>&gt;= 18</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0ejaxw6">
+          <text>common cold</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0thw98u">
+          <text>sore throat</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1qa0yhb">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1fdjdqh">
+          <text></text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1iha2o3">
+        <inputEntry id="UnaryTests_1bf2gcm">
+          <text>&gt;= 18</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1mi09sh">
+          <text>common cold</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_00pn8ws">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_08845gs">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1c4ik6d">
+          <text></text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_04vpoup">
+        <inputEntry id="UnaryTests_07wp8pm">
+          <text>&gt;= 18</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_11olshf">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1bv7vlz">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0bjq5ly">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_05pbicp">
+          <text></text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0y9lbcy">
+        <inputEntry id="UnaryTests_0ifqngv">
+          <text>&gt;= 18</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_06zcnmi">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_198x2je">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0jtnq8e">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1tn2jz0">
+          <text></text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <dmndi:DMNDI>
+    <dmndi:DMNDiagram id="DMNDiagram_02mg1yx">
+      <dmndi:DMNShape id="DMNShape_1hfn1ul" dmnElementRef="decision_1su1ox9">
+        <dc:Bounds height="80" width="180" x="150" y="150" />
+      </dmndi:DMNShape>
+    </dmndi:DMNDiagram>
+  </dmndi:DMNDI>
+</definitions>

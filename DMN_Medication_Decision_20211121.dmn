@@ -1,0 +1,956 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" id="Definitions_1lmdbh5" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="4.11.1">
+  <decision id="Decision_180yd0r" name="Medication Type Preference">
+    <decisionTable id="DecisionTable_0lu55rj" hitPolicy="ANY">
+      <input id="Input_1" label="Conventional Medicine">
+        <inputExpression id="InputExpression_1" typeRef="string">
+          <text>ConventionalMedicine</text>
+        </inputExpression>
+        <inputValues id="UnaryTests_1g9jjmz">
+          <text>"Yes","No"</text>
+        </inputValues>
+      </input>
+      <input id="InputClause_06c5ebd" label="Phytopharmacy">
+        <inputExpression id="LiteralExpression_05iys0m" typeRef="string">
+          <text>Phytopharmacy</text>
+        </inputExpression>
+        <inputValues id="UnaryTests_1u5azv3">
+          <text>"Yes","No"</text>
+        </inputValues>
+      </input>
+      <input id="InputClause_0427u63" label="Homeopathy">
+        <inputExpression id="LiteralExpression_03312ln" typeRef="string">
+          <text>Homeopathy</text>
+        </inputExpression>
+        <inputValues id="UnaryTests_09q7qi1">
+          <text>"Yes","No"</text>
+        </inputValues>
+      </input>
+      <output id="Output_1" label="Drug Preference Type" name="DrugPreferenceType" typeRef="string">
+        <outputValues id="UnaryTests_0wno5yd">
+          <text>"Conventional Medicine","Phytopharmacy","Homeopathy"</text>
+        </outputValues>
+      </output>
+      <rule id="DecisionRule_00a2ixv">
+        <inputEntry id="UnaryTests_11vc48n">
+          <text>"Yes"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1mazqs8">
+          <text>"Yes"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0r3egzs">
+          <text>"Yes"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_07zrwxl">
+          <text>"Conventional Medicine"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_083d46b">
+        <inputEntry id="UnaryTests_0850ybq">
+          <text>"No"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1bnl9bn">
+          <text>"Yes"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1r47n6l">
+          <text>"Yes"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0jxbmoz">
+          <text>"Phytopharmacy"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1nxv6sl">
+        <inputEntry id="UnaryTests_1prxxct">
+          <text>"Yes"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0uxdiqt">
+          <text>"No"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0wknnez">
+          <text>"Yes"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0eruode">
+          <text>"Conventional Medicine"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0xu65f4">
+        <inputEntry id="UnaryTests_1i6qmw6">
+          <text>"Yes"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0kwgaou">
+          <text>"Yes"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1e1k6tx">
+          <text>"No"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1wknp02">
+          <text>"Conventional Medicine"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1nxz406">
+        <inputEntry id="UnaryTests_1t3u2fz">
+          <text>"Yes"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0tswnq8">
+          <text>"No"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_01n8ydz">
+          <text>"No"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1vsghhx">
+          <text>"Conventional Medicine"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1ojyrtl">
+        <inputEntry id="UnaryTests_0qsgcu7">
+          <text>"No"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_085k089">
+          <text>"Yes"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1go989g">
+          <text>"No"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_02dbs0u">
+          <text>"Phytopharmacy"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0kx0vs7">
+        <inputEntry id="UnaryTests_0gs682i">
+          <text>"No"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1eevxdh">
+          <text>"No"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0qtl3bq">
+          <text>"Yes"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1ggqmt5">
+          <text>"Homeopathy"</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <decision id="Decision_1f84kt7" name="Define Fever Status">
+    <decisionTable id="DecisionTable_0q34yeq">
+      <input id="InputClause_11qpj8s" label="Body Temperature" biodi:width="192">
+        <inputExpression id="LiteralExpression_05bgs67" typeRef="integer">
+          <text>BodyTemperature</text>
+        </inputExpression>
+      </input>
+      <output id="OutputClause_17o9exs" label="Fever Status" name="FeverStatus" typeRef="string">
+        <outputValues id="UnaryTests_0soem4y">
+          <text>"No fever","Low grade fever","Fever"</text>
+        </outputValues>
+      </output>
+      <rule id="DecisionRule_1r7vbos">
+        <inputEntry id="UnaryTests_0eky8bf">
+          <text>&lt;37.5</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0kpr989">
+          <text>"No fever"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1pv8su1">
+        <inputEntry id="UnaryTests_03psg3n">
+          <text>[37.5..38.5]</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1c3e1c0">
+          <text>"Low grade fever"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1eehbat">
+        <inputEntry id="UnaryTests_00hpdml">
+          <text>&gt;38</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1vtcfpb">
+          <text>"Fever"</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <decision id="Decision_137qi22" name="Medication suggestion">
+    <informationRequirement id="InformationRequirement_15i431x">
+      <requiredDecision href="#Decision_1f84kt7" />
+    </informationRequirement>
+    <informationRequirement id="InformationRequirement_1s0f621">
+      <requiredDecision href="#Decision_180yd0r" />
+    </informationRequirement>
+    <decisionTable id="DecisionTable_0mntqjo" hitPolicy="COLLECT">
+      <input id="InputClause_0fe8x55" label="Drug Preference Type">
+        <inputExpression id="LiteralExpression_06q3h84" typeRef="string">
+          <text>DrugPreferenceType</text>
+        </inputExpression>
+        <inputValues id="UnaryTests_1l1i42c">
+          <text>"Conventional Medicine","Phytopharmacy","Homeopathy"</text>
+        </inputValues>
+      </input>
+      <input id="InputClause_1rjxioc" label="Fever Status">
+        <inputExpression id="LiteralExpression_0v39e4x" typeRef="string">
+          <text>FeverStatus</text>
+        </inputExpression>
+        <inputValues id="UnaryTests_15opl7j">
+          <text>"Low grade fever","Fever","Nasal Congestion"</text>
+        </inputValues>
+      </input>
+      <input id="InputClause_1tv7nri" label="Nasal Symptoms">
+        <inputExpression id="LiteralExpression_1rpqsse" typeRef="string">
+          <text>NasalSymptoms</text>
+        </inputExpression>
+        <inputValues id="UnaryTests_186imrc">
+          <text>"Sore nose","Nasal congestion"</text>
+        </inputValues>
+      </input>
+      <input id="InputClause_1k2fdw4" label="Cough Symptoms">
+        <inputExpression id="LiteralExpression_135yaur" typeRef="string">
+          <text>CoughSymptoms</text>
+        </inputExpression>
+        <inputValues id="UnaryTests_0yfnb82">
+          <text>"Dry cough","Cough with mucus"</text>
+        </inputValues>
+      </input>
+      <input id="InputClause_0uqux0f" label="Throat Symptoms" biodi:width="192">
+        <inputExpression id="LiteralExpression_1ule7cm" typeRef="string">
+          <text>ThroatSymptoms</text>
+        </inputExpression>
+        <inputValues id="UnaryTests_1l8xhtv">
+          <text>"Sore throat","Swallowing pain"</text>
+        </inputValues>
+      </input>
+      <output id="OutputClause_1igpevp" label="Fever Medication Priority 1" name="FeverMedication1" typeRef="string" biodi:width="192">
+        <outputValues id="UnaryTests_1eg7fhv">
+          <text>"Teemischung Linden-Holunderblüten","DOLO SPEDIFEN forte Filmtabl 400 mg","DOLO SPEDIFEN Tabl 200 mg","Denosol Erkältungsbad","Selomida Erkältung","Similasan Grippe und Erkältung"</text>
+        </outputValues>
+      </output>
+      <output id="OutputClause_1ohogy4" label="Fever Medication Priority 2" name="FeverMedication2" typeRef="string" biodi:width="192">
+        <outputValues id="UnaryTests_1ch2qly">
+          <text>"Teemischung Linden-Holunderblüten","DOLO SPEDIFEN forte Filmtabl 400 mg","DOLO SPEDIFEN Tabl 200 mg","Denosol Erkältungsbad","Selomida Erkältung","Similasan Grippe und Erkältung"</text>
+        </outputValues>
+      </output>
+      <output id="OutputClause_0fzvowb" label="Nasal Medication" name="NasalMedica" typeRef="string">
+        <outputValues id="UnaryTests_00t6dnl">
+          <text>"Nasensalbe Rüedi Spirig HC","TRIOFAN Schnupfen o Kons Spray Erw/Kind","Weleda-Schnupfencrème","Triomer Sinomarin Nasenspray","Euphorbium compositum Heel","Emser Nasenspülsalz"</text>
+        </outputValues>
+      </output>
+      <output id="OutputClause_1indwo2" label="Cough Medication" name="CoughMedication" typeRef="string">
+        <outputValues id="UnaryTests_0bsa23a">
+          <text>"Solmucol Brausetabl 600 mg","NeoCitran Hustenstiller Sirup","Prospan","Honig","Drosetux"</text>
+        </outputValues>
+      </output>
+      <output id="OutputClause_1o6opnm" label="Throat Medication" name="ThroatMedication" typeRef="string">
+        <outputValues id="UnaryTests_0ugvq2m">
+          <text>"Strepsils Dolo Lutschtabl","Emser Pastillen","Spagyrom® Lutschtabletten"</text>
+        </outputValues>
+      </output>
+      <rule id="DecisionRule_0bghdvr">
+        <inputEntry id="UnaryTests_1glkqzj">
+          <text>"Conventional Medicine"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1d7w2mx">
+          <text>"Low grade fever"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0k9ugwz">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0gqec96">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_00vbux7">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1wfw0gs">
+          <text>"Teemischung Linden-Holunderblüten"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0092bn3">
+          <text>"DOLO SPEDIFEN Tabl 200 mg"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_183d124">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_18lyc1y">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1tqogjk">
+          <text></text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_19r87at">
+        <inputEntry id="UnaryTests_1t4mwh3">
+          <text>"Conventional Medicine"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1py2o3y">
+          <text>"Fever"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0m9xuyl">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0ectup0">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_04d5fod">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1lhh0xw">
+          <text>"DOLO SPEDIFEN forte Filmtabl 400 mg"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_10crwr4">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0x9bipn">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1nyitib">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_15p4ly5">
+          <text></text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_02nig5z">
+        <inputEntry id="UnaryTests_1vkg9ev">
+          <text>"Phytopharmacy"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0wnwk6j">
+          <text>"Low grade fever"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1srl171">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1s6w19z">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1r9zfb8">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_03eq8ys">
+          <text>"Teemischung Linden-Holunderblüten"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0an664m">
+          <text>"Denosol Erkältungsbad"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1k1byxt">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0ufoxiy">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0t0erfx">
+          <text></text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1dg9ncr">
+        <inputEntry id="UnaryTests_0lhdn4m">
+          <text>"Phytopharmacy"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0hnygqo">
+          <text>"Fever"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1h5lz76">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_189djy6">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0rmmhc8">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0p4ikm4">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1e9334j">
+          <text>"DOLO SPEDIFEN forte Filmtabl 400 mg"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1cz3f7l">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0mzv99r">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_040h6kl">
+          <text></text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1slqgv6">
+        <inputEntry id="UnaryTests_0h8dotp">
+          <text>"Homeopathy"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_187ju6b">
+          <text>"Low grade fever"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_00vqu8p">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_18d6wa0">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1c59rw6">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0e0x6fi">
+          <text>"Selomida Erkältung"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0xmgn3y">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0zdwn4y">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1a8lhvo">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_00e5mlw">
+          <text></text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_10n6d6n">
+        <inputEntry id="UnaryTests_14y4fcd">
+          <text>"Homeopathy"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0vttn2i">
+          <text>"Fever"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1f3qz5c">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0sreo7q">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0h6lyxx">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_05cmozr">
+          <text>"Similasan Grippe und Erkältung"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_01rva47">
+          <text>"DOLO SPEDIFEN forte Filmtabl 400 mg"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1pofia8">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_07xhl70">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0wy9dp4">
+          <text></text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1hdok5u">
+        <inputEntry id="UnaryTests_1i1ggyc">
+          <text>"Conventional Medicine"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0aluozr">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0v43tm0">
+          <text>"Sore nose"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0l2dpyg">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_07yg5my">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0ivtmbv">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1r6ewlg">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1brq2f6">
+          <text>"Nasensalbe Rüedi Spirig HC"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0wfy8h3">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_10ften2">
+          <text></text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_00w7ufm">
+        <inputEntry id="UnaryTests_1g1dvkh">
+          <text>"Conventional Medicine"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_11np51f">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1uqxjkx">
+          <text>"Nasal congestion"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1cv5020">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_06ezebj">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0s88us5">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_09u5j64">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0061pvx">
+          <text>"TRIOFAN Schnupfen o Kons Spray Erw/Kind"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1o76zml">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0hek3mw">
+          <text></text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0l659jk">
+        <inputEntry id="UnaryTests_08rcyeg">
+          <text>"Phytopharmacy"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1gjcwrn">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1p33jay">
+          <text>"Sore nose"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1vp2m67">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1oa4krd">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1cb2ei8">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1hovr3o">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0fwgchk">
+          <text>"Weleda-Schnupfencrème"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0hnmcxj">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0jsqhe4">
+          <text></text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0x0aq1v">
+        <inputEntry id="UnaryTests_16yub29">
+          <text>"Phytopharmacy"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_11tv2wy">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0z28nbq">
+          <text>"Nasal congestion"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_049f9dw">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0pd27cp">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1rsr1b1">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0uytgsq">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0v3h5ku">
+          <text>"Triomer Sinomarin Nasenspray"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0wa8a95">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_00slwy8">
+          <text></text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0gzs0ul">
+        <inputEntry id="UnaryTests_0sml5id">
+          <text>"Homeopathy"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1vcekry">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1rc3s59">
+          <text>"Sore nose"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_01buh79">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1e7phka">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1urdjqt">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0n9lmp6">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1pomlck">
+          <text>"Euphorbium compositum Heel"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1gy72kx">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1u8is37">
+          <text></text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_153jl6t">
+        <inputEntry id="UnaryTests_17du0f8">
+          <text>"Homeopathy"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_17wke4e">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1wb2bo4">
+          <text>"Nasal congestion"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0laa8o4">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0c8ky45">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_15g900t">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_035ji1h">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0rp9t7i">
+          <text>"Emser Nasenspülsalz"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1mb1g5k">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0cpnj94">
+          <text></text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1bocrjk">
+        <inputEntry id="UnaryTests_0l2wlvj">
+          <text>"Conventional Medicine"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0881o8a">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0y87tz4">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_05h7ote">
+          <text>"Dry cough"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0eai435">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0porpgr">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0dpx9ec">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0nc3pd9">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1ty5v92">
+          <text>"NeoCitran Hustenstiller Sirup"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1d427q5">
+          <text></text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1mw0nrr">
+        <inputEntry id="UnaryTests_0qnwfdy">
+          <text>"Conventional Medicine"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0v5icvq">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0uotwg2">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_16dxe0l">
+          <text>"Cough with mucus"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1608leh">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1rr078r">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0z28iyn">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_03obao5">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0b47c3b">
+          <text>"Solmucol Brausetabl 600 mg"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0h3a839">
+          <text></text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0x8dnvm">
+        <inputEntry id="UnaryTests_0a108ps">
+          <text>"Phytopharmacy"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1inezog">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0bnrffn">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1l2z1ur">
+          <text>"Dry cough"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0m4h8y4">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1pv1uv9">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0fj33sr">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1hjc1e9">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1std0lh">
+          <text>"Honig"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0olj0y9">
+          <text></text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0my6lru">
+        <inputEntry id="UnaryTests_0hjcjuh">
+          <text>"Phytopharmacy"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1b3qt95">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_01dyrrv">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0jbeuch">
+          <text>"Cough with mucus"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1b5t32w">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0vb559w">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1wci4lm">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1so5i36">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0z4m2wj">
+          <text>"Prospan"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_06ysqzy">
+          <text></text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1n2rlzk">
+        <inputEntry id="UnaryTests_06r2xf5">
+          <text>"Homeopathy"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1tx1rm5">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1y3v2wp">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0gowq2t">
+          <text>"Dry cough"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_06hab6n">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1j9yhdi">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0rccnlg">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0ofubn4">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_10zao36">
+          <text>"Drosetux"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0e6goi6">
+          <text></text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1h1ejz8">
+        <inputEntry id="UnaryTests_0sbbo1i">
+          <text>"Homeopathy"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1h5m4v7">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1x7k7at">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1mouvc8">
+          <text>"Cough with mucus"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_051s8o0">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1ooqijj">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0rk3890">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0dmx13d">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1fhszlu">
+          <text>"Drosetux"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0nu31kl">
+          <text></text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0tckwt1">
+        <inputEntry id="UnaryTests_05arush">
+          <text>"Conventional Medicine"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0op7bhi">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0be2fc4">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0io76sl">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_184f8jp">
+          <text>"Sore throat","Swallowing pain"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_14io1a1">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0vumoga">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1q83xco">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1ixcbyn">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_04w1hgk">
+          <text>"Strepsils Dolo Lutschtabl"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1jrqv4p">
+        <inputEntry id="UnaryTests_0zfmozp">
+          <text>"Phytopharmacy"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_03z4why">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1dbvzus">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_19eg4r6">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_11fxxim">
+          <text>"Sore throat","Swallowing pain"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0ghdrd8">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0rk5njo">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0u9ihmk">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1hhisa0">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0mbpznm">
+          <text>"Emser Pastillen"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_07nklj9">
+        <inputEntry id="UnaryTests_0m1evco">
+          <text>"Homeopathy"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1rdgmp4">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1rn6g98">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_06db1z3">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_01i5d8l">
+          <text>"Sore throat","Swallowing pain"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_17s78vc">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1dj39rv">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_19wund7">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1cng4n6">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0cttx2d">
+          <text>"Spagyrom® Lutschtabletten"</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <textAnnotation id="TextAnnotation_1rfk9fh">
+    <text>According to Body Temperature [°C]</text>
+  </textAnnotation>
+  <association id="Association_0vtyhdx">
+    <sourceRef href="#TextAnnotation_1rfk9fh" />
+    <targetRef href="#Decision_1f84kt7" />
+  </association>
+  <dmndi:DMNDI>
+    <dmndi:DMNDiagram>
+      <dmndi:DMNShape dmnElementRef="Decision_180yd0r">
+        <dc:Bounds height="80" width="180" x="160" y="240" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="DMNShape_0l6t5mx" dmnElementRef="Decision_1f84kt7">
+        <dc:Bounds height="80" width="180" x="380" y="240" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="DMNShape_0lv9m06" dmnElementRef="TextAnnotation_1rfk9fh">
+        <dc:Bounds height="80" width="100" x="480" y="360" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_1l4nv4g" dmnElementRef="Association_0vtyhdx">
+        <di:waypoint x="510" y="360" />
+        <di:waypoint x="490" y="320" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="DMNEdge_1yox05j" dmnElementRef="InformationRequirement_15i431x">
+        <di:waypoint x="470" y="240" />
+        <di:waypoint x="390" y="180" />
+        <di:waypoint x="390" y="160" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="DMNEdge_0d5nuqu" dmnElementRef="InformationRequirement_1s0f621">
+        <di:waypoint x="250" y="240" />
+        <di:waypoint x="330" y="180" />
+        <di:waypoint x="330" y="160" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNShape id="DMNShape_1pefkcc" dmnElementRef="Decision_137qi22">
+        <dc:Bounds height="80" width="180" x="270" y="80" />
+      </dmndi:DMNShape>
+    </dmndi:DMNDiagram>
+  </dmndi:DMNDI>
+</definitions>
