@@ -18,7 +18,7 @@ We would like to overcome this challenge by implementing a workflow system which
 - the health issue occurs often which makes it economically significant
 - no class A/B/B+ medications are involved (which require a prescription and/or an in-person consultation with a pharmacist) 
 - customer-preferences can be included (type of medicine: conventional medicine, phytopharmaceuticals (herbal medicine) or homeopathy; type of galenic forms: tablet, syrup, nasal spray, droplets etc.)
-- there is a predefined therapeutic guideline (inlcuding 'red flags', which lead to a consultation with a pharmacist or a general practitioner) for this illness [see picture below](###picture1)
+- there is a predefined therapeutic guideline (inlcuding 'red flags', which lead to a consultation with a pharmacist or a general practitioner) for this illness [see Picture 1](###picture1)
 - the process flow is built in a way which allows easy expansion with additional indications (illnesses)
 - expected high customer-acceptance due to convenience (privacy, no strenuous conversation while coughing/sniffling)
 - minimizing direct human contact helps to contain the disease (the spread of the common cold can be contained by keeping distance)
