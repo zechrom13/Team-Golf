@@ -65,10 +65,12 @@ For further refinement of the process, the following points should be considered
     - stock information and prices: an integration of the stock database enables - instead of suggesting the same nose spray for every customer with a congested nose - medication suggestions dependent on the current availablity, expiration date of products in stock or the margin from current purchasing conditions.
 - in principle, extensions for data gathering (measurement of basic biomarkes such as body temperature or blood pressure) could be added via sensors attached to the machine
 - fun, interactive 3D animations of a human body might help the customer to indicate where he/she has got problems (like pain or rash)
+- sound examples (sound of dry, irritable coughing vs. productive cough with mucus) or pictures (dermatological problems) could be presented to the customer, to help him self-diagnose
 - in times of COVID-19, the selection of predefined symptoms could redirect the customer to a COVID test reservation tool
 
 Instead of Google Forms, the implementation of a chatbot would be possible for the purpose of information gathering (anamnese). The chatbot could work with voice recognition. Technically it was easier to not implement a chatbot. It would include quite some programming to serve the same purpose as the Google Forms we used.
 Medical anamnese is a highly complex procedure. The use of AI is an interesting approach. The more narrow the area of diagnosis is, the easier it is to train a model (e.g. detection of breast cancer in mamography pictures). For now, a broad spectrum of possible diagnoses requires the cooperation of human experience with artificial intelligence. For now.
+After all, the solution presented here could as well be used as a self-dieagnosis tool combined with a webshop.
 
 
 # Authors
