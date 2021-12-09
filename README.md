@@ -11,16 +11,14 @@
 
 
 # Project Idea and Aim
-In our days, pharmacies are facing the challenge of repositioning themselves within the healthcare market. The challenge will be to differentiate themselves from the retail market, instead become a healthcare facility. Since the revision of the Therapeutic Products Act (TPA) in January 2019, pharmacies are allowed to sell certain drugs (drugs of category B+), which previously needed a prescription of a medical doctor. In order to receive one of these B+ drugs, the customer needs to consult a pharmacist - a very time consuming consultation. Furthermore, due to the same revision, pharmacies lost their monopoly of selling certain OTC drugs ("over the counter drugs", e.g. PANADOL S Filmtabl 500 mg) to drugstores (so called "Drogerien"). In summary, pharmacies are facing more time consuming consultations and lose some of their sales to drugstores. One way to solve this problem is trying to shorten the time for each consultation, which might result in a re
-        Pull requests
-duction of consultation-quality. Another way is to hire more pharmaceutical assistants, which leads to an increase of the expenses - an option that is not affordable for most pharmacies.
+In our days, pharmacies are facing the challenge of repositioning themselves within the healthcare market. The challenge will be to differentiate themselves from the retail market, instead become a healthcare facility. Since the revision of the Therapeutic Products Act (TPA) in January 2019, pharmacies are allowed to sell certain drugs (drugs of category B+), which previously needed a prescription of a medical doctor. In order to receive one of these B+ drugs, the customer needs to consult a pharmacist - generally a very time consuming process. Furthermore, due to the same revision, pharmacies lost their monopoly of selling certain OTC drugs ("over the counter drugs", e.g. PANADOL S Filmtabl 500 mg) to drugstores (so called "Drogerien"). In summary, pharmacies are facing more time consuming consultations and lose some of their sales to drugstores. One way to solve this problem is trying to shorten the time for each consultation, which might result in a reduction of consultation-quality. Another way is to hire more pharmaceutical assistants, which leads to an increase of the expenses - an option that is not affordable for most pharmacies.
 
 We would like to overcome this challenge by implementing a workflow system which is capable of handling minor, uncritical health issues fully automated on a chatbot-like screen in the pharmacy by following validated disease-specific guidelines. As an illustrative example, we will focus exclusively on automatizing the process for a pharmacy consultation concerning common cold symptoms. The following conditions can be fulfilled by this use case:
 
 - the health issue occurs often which makes it economically significant
 - no class A/B/B+ medications are involved (which require a prescription and/or an in-person consultation with a pharmacist) 
 - customer-preferences can be included (type of medicine: conventional medicine, phytopharmaceuticals (herbal medicine) or homeopathy; type of galenic forms: tablet, syrup, nasal spray, droplets etc.)
-- there is a predefined therapeutic guideline (including 'red flags', which lead to a consultation with a pharmacist or a general practitioner) for this illness [see Picture 1](###picture1)
+- there is a predefined therapeutic guideline (including 'red flag symptoms', which lead to a consultation with a pharmacist or a general practitioner) for this illness [see Picture 1](###picture1)
 - the process flow is built in a way which allows easy expansion with additional indications (illnesses)
 - expected high customer-acceptance due to convenience (privacy, no strenuous conversation while coughing/sniffling)
 - minimizing direct human contact helps to contain the disease (the spread of the common cold can be contained by keeping distance)
@@ -32,24 +30,31 @@ We would like to overcome this challenge by implementing a workflow system which
 ## Process Description
 The reader should imagine that there is a quiet corner in the pharmacy, where the customer can do the automated consultation on a touch screen.
 
-The process is split in 2 sections:
+The process is split in two main sections:
 
 1. Anamnese
-Questionnaire to define the symptoms and to rule out any 'red flag patients' who need further personal consultation by a pharmacist or a medical doctor.
-2. Treatment decision
-Based on the information from section 1, there are three possible outcomes (treatment decision ways)
+Questionnaire (Google forms) to define the customer's symptoms and decide whether the customer is suitable for self medication or if further personal consultation is needed. 
+2. Consultation decision
+Based on the information from section 1, there are two possible outcomes (treatment decision ways)
 
-    a. No further consultation is necessary (no red flag generated) and the customer can select his preferences for the type of medication. According to the preferences, the machine suggests medication options which are selected by the customer. He/she can pay directly at the self-service machine and gets the medication delivered there too (e.g. via a storage and dispensing robot like the one from BD ROWA)
+    a. No pharmacist consultation is necessary and the customer can select his preferences for the type of medication. According to the preferences, the machine suggests medication options which are selected by the customer. The medication is delivered to the customer (e.g. via a storage and dispensing robot like the one from BD ROWA).
     
-    b. Consultation with the pharmacist is needed. The customer receives a paper ticket with a number for the express consultation counter for people who use the self-service screen (=incentive to use the self-service machine)
+    b. Consultation with the pharmacist is needed. A paper ticket with the instance ID is printed for the customer. Also, the Google form is sent to the pharmacist at the express consultation counter. After an in-person consultation with the pharmacist, the customer can get the drugs needed. 
 
-   
+## Process Restrictions
+The following simplifications were made:
+- the payment process was not implemented
+- the interface with the robotic dispense system was not created
+- no timer events were built into the process (for example when a customer starts a process at the automated consultation screen but leaves the process at a random point without finishing it)
+
 ## Process Requirements
 
 
 
 ## BPMN Model of the Process
-![BPMN](https://user-images.githubusercontent.com/68386983/144746996-b4c5e374-6251-48f0-9f5b-d3657f6a3689.png)
+![Bild_2021-12-09_203259](https://user-images.githubusercontent.com/68386983/145463643-6b16eb40-996d-47a3-8f12-ed5347fbe8c0.png)
+
+
 
 
 # Outlook
@@ -83,6 +88,16 @@ Roman Zech, process developer
 
 
 # Additional Information
+
+## Abbreviations, Definitions
+Expression | Explanation
+| :------------- | :-------------
+API | active pharmaceutical ingredient = the chemical that causes the therapeutic effect
+red flag symptom | a symptom of an illness which requires thorough (differential) diagnosis
+OTC drug | over the counter drugs = drugs that can be bought in pharmacies without a doctor's prescription
+drug category | categories A, B, B+, C, D. Drugs are categorized in the approval process by the Swiss Agency for Therapeutic Products (Swissmedic). For drugs of lists A and B, a prescription is always needed. B+ requires at least a personal consultation with a pharmacist. C drugs will be listed B+ or D in the next few years and they require a consultation with a pharmacy employee. D drugs can also be sold in "Drogerien".
+galenic form | pharmaceutical formulation, which can be a tablet, capsule, sirup, eye drops, etc.
+BD Rowa | robotic system in modern pharmacies to store and automatically dispense drugs [see video](https://www.youtube.com/watch?v=erayPdbMNu0)
 
 ## Pictures
 ### Picture1
