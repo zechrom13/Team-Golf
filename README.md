@@ -1,3 +1,8 @@
+# DigiBP Group Project  -  Fall Semester 2021
+Lukas Suter, Dominik Meyer, Roman Zech, David Tschirky
+
+
+
 # Table of Contents
 - [Project Idea & Aim](#project-idea-and-aim)
 - [Process](#process)
@@ -79,12 +84,6 @@ Instead of Google Forms, the implementation of a chatbot would be possible for t
 Medical anamnese is a highly complex procedure. The use of AI is an interesting approach. The more narrow the area of diagnosis is, the easier it is to train a model (e.g. detection of breast cancer in mammography pictures). For now, a broad spectrum of possible diagnoses requires the cooperation of human experience with artificial intelligence. For now.
 After all, the solution presented here could as well be used as a self-dieagnosis tool combined with a webshop.
 
-
-# Authors
-David Tschirky, pharmacist  
-Lukas Suter, pharmacist/insurance performance manager  
-Dominik Meyer, project manager??  
-Roman Zech, process developer  
 
 
 # Additional Information
