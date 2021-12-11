@@ -1,4 +1,4 @@
-# DigiBP Group Project  -  Fall Semester 2021
+# DigiBP Group Project  -  Fall Semester 2021 - Group golf
 Lukas Suter, Dominik Meyer, Roman Zech, David Tschirky
 
 
@@ -45,6 +45,11 @@ Based on the information from section 1, there are two possible outcomes (treatm
     a. No pharmacist consultation is necessary and the customer can select his preferences for the type of medication. According to the preferences, the machine suggests medication options which are selected by the customer. The medication is delivered to the customer (e.g. via a storage and dispensing robot like the one from BD ROWA).
     
     b. Consultation with the pharmacist is needed. A paper ticket with the instance ID is printed for the customer. Also, the Google form is sent to the pharmacist at the express consultation counter. After an in-person consultation with the pharmacist, the customer can get the drugs needed. 
+
+## Process Details
+under construction
+Integromat as ISaaS platform for the integration scenario. 
+
 
 ## Process Restrictions
 The following simplifications were made:
