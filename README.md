@@ -31,7 +31,6 @@ We would like to overcome this challenge by implementing a workflow system which
 
 # Process
 
-
 ## Process Description
 The reader should imagine that there is a quiet corner in the pharmacy, where the customer can do the automated consultation on a touch screen.
 
@@ -42,9 +41,9 @@ Questionnaire (Google forms) to define the customer's symptoms and decide whethe
 2. Consultation decision
 Based on the information from section 1, there are two possible outcomes (treatment decision ways)
 
-    a. No pharmacist consultation is necessary and the customer can select his preferences for the type of medication. According to the preferences, the machine suggests medication options which are selected by the customer. The medication is delivered to the customer (e.g. via a storage and dispensing robot like the one from BD ROWA).
+    a. No pharmacist consultation is necessary and the customer can select his preferences for the type of medication. According to the preferences, the machine suggests medication options which are selected by the customer. The medication is delivered to the customer (e.g. via a storage and dispensing robot like the one from BD ROWA). Process ends.
     
-    b. Consultation with the pharmacist is needed. A paper ticket with the instance ID is printed for the customer. Also, the Google form is sent to the pharmacist at the express consultation counter. After an in-person consultation with the pharmacist, the customer can get the drugs needed. 
+    b. Consultation with the pharmacist is needed. A paper ticket with the instance ID is printed for the customer. After an in-person consultation with the pharmacist, the customer can get the drugs needed. Process ends.
 
 ## Process Details
 under construction
@@ -57,19 +56,12 @@ The following simplifications were made:
 - the interface with the robotic dispense system was not created
 - no timer events were built into the process (for example when a customer starts a process at the automated consultation screen but leaves the process at a random point without finishing it)
 
-## Process Requirements
-
-
-
 ## BPMN Model of the Process
 ![Bild_2021-12-09_203259](https://user-images.githubusercontent.com/68386983/145463643-6b16eb40-996d-47a3-8f12-ed5347fbe8c0.png)
 
 
-
-
 # Outlook
 The digitalized process presented in this readme is a simplified example of digitalization in a health care process. The following aspects complicate digitalization in this area:
-- data privacy/security: medical data is particularly worth protecting
 - complexity: medicine is not an accurate science. Knowledge is mostly gained out of a (more or less) representative population that does not necessarily represent the individual accurately. Therefore additional control mechanisms are needed to protect those not represented by study populations. In our case, the model should be refined i.a. in the following aspects:
     - age: certain OTC medication is not suitable for elderly people. Differentiating only between <18 years old or older is not enough.
     - allergies: people with allergies to certain APIs (active pharmaceutical ingredients) need special attention
@@ -80,6 +72,7 @@ For further refinement of the process, the following points should be considered
 - connect automated system with the pharmacy management system (contains customer data and medication history of known customers, stock information, prices)
     - customer data: if the customer could for example use a customer card barcode to log in to the automated system, information like age, other medication or allergies would be available to the automated system
     - stock information and prices: an integration of the stock database enables - instead of suggesting the same nose spray for every customer with a congested nose - medication suggestions dependent on the current availability, expiration date of products in stock or the margin from current purchasing conditions.
+    - in this case, data privacy/security becomes an issue: medical data is particularly worth protecting. in our example, the process is kept anonymous.
 - in principle, extensions for data gathering (measurement of basic biomarkes such as body temperature or blood pressure) could be added via sensors attached to the machine
 - fun, interactive 3D animations of a human body might help the customer to indicate where he/she has got problems (like pain or rash)
 - sound examples (sound of dry, irritable coughing vs. productive cough with mucus) or pictures (dermatological problems) could be presented to the customer, to help him self-diagnose
@@ -88,7 +81,6 @@ For further refinement of the process, the following points should be considered
 Instead of Google Forms, the implementation of a chatbot would be possible for the purpose of information gathering (anamnese). The chatbot could work with voice recognition. Technically it was easier to not implement a chatbot. It would include quite some programming to serve the same purpose as the Google Forms we used.
 Medical anamnese is a highly complex procedure. The use of AI is an interesting approach. The more narrow the area of diagnosis is, the easier it is to train a model (e.g. detection of breast cancer in mammography pictures). For now, a broad spectrum of possible diagnoses requires the cooperation of human experience with artificial intelligence. For now.
 After all, the solution presented here could as well be used as a self-dieagnosis tool combined with a webshop.
-
 
 
 # Additional Information
