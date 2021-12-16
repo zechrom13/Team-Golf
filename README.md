@@ -66,6 +66,7 @@ The digitalized process presented in this readme is a simplified example of digi
     - age: certain OTC medication is not suitable for elderly people. Differentiating only between <18 years old or older is not enough.
     - allergies: people with allergies to certain APIs (active pharmaceutical ingredients) need special attention
     - pregnancy: many OTC drugs are contraindicated during pregnancy or while breastfeeding
+
 For further refinement of the process, the following points should be considered:
 - integration of an existing anamnese REST API (e.g. Sublimd) to broaden field of use
 - after completing self-anamnese which requires further consultation with the pharmacist, user data could be transmitted to pharmacist via webservice or interface with the pharmacy management system
