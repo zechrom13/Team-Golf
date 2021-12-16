@@ -57,7 +57,7 @@ The following simplifications were made:
 - no timer events were built into the process (for example when a customer starts a process at the automated consultation screen but leaves the process at a random point without finishing it)
 
 ## BPMN Model of the Process
-![Bild_2021-12-09_203259](https://user-images.githubusercontent.com/68386983/145463643-6b16eb40-996d-47a3-8f12-ed5347fbe8c0.png)
+![Bild_2021-12-09_203259](https://github.com/DigiBP/Team-Golf/blob/main/Final%20BPMN.png)
 
 
 # Outlook
