@@ -1,0 +1,924 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" id="Definitions_1lmdbh5" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="4.11.1">
+  <decision id="Decision_137qi22" name="Medication suggestion">
+    <decisionTable id="DecisionTable_0mntqjo" hitPolicy="FIRST">
+      <input id="InputClause_0fe8x55" label="treatpref">
+        <inputExpression id="LiteralExpression_06q3h84" typeRef="string">
+          <text>treatpref</text>
+        </inputExpression>
+        <inputValues id="UnaryTests_1l1i42c">
+          <text>"Conventional medicine"</text>
+        </inputValues>
+      </input>
+      <input id="InputClause_1rjxioc" label="fever">
+        <inputExpression id="LiteralExpression_0v39e4x" typeRef="string">
+          <text>fever</text>
+        </inputExpression>
+        <inputValues id="UnaryTests_15opl7j">
+          <text>"Yes low fever (between 37.5 and 38.5 degrees)","No (below 37.5 degrees)"</text>
+        </inputValues>
+      </input>
+      <input id="InputClause_1tv7nri" label="nasal" biodi:width="192">
+        <inputExpression id="LiteralExpression_1rpqsse" typeRef="string">
+          <text>nasal</text>
+        </inputExpression>
+        <inputValues id="UnaryTests_186imrc">
+          <text>"Sore nose","Blocked nose","I have no problem with my nose"</text>
+        </inputValues>
+      </input>
+      <input id="InputClause_0uqux0f" label="throat" biodi:width="192">
+        <inputExpression id="LiteralExpression_1ule7cm" typeRef="string">
+          <text>throat</text>
+        </inputExpression>
+        <inputValues id="UnaryTests_1l8xhtv">
+          <text>"Sore throat","Swallowing pain","I have no problem with my throat"</text>
+        </inputValues>
+      </input>
+      <input id="InputClause_1k2fdw4" label="cough1">
+        <inputExpression id="LiteralExpression_135yaur" typeRef="string">
+          <text>cough1</text>
+        </inputExpression>
+        <inputValues id="UnaryTests_0yfnb82">
+          <text>"Cough with mucus","Dry cough (nothing is coming out of the mouth during or after coughing)","I have no coughing"</text>
+        </inputValues>
+      </input>
+      <output id="OutputClause_1igpevp" label="Fever Medication Priority 1" name="FeverMedication1" typeRef="string" biodi:width="192">
+        <outputValues id="UnaryTests_1eg7fhv">
+          <text>"Teemischung Linden-Holunderblüten","DOLO SPEDIFEN forte Filmtabl 400 mg","DOLO SPEDIFEN Tabl 200 mg","Denosol Erkältungsbad","Selomida Erkältung","Similasan Grippe und Erkältung"</text>
+        </outputValues>
+      </output>
+      <output id="OutputClause_1ohogy4" label="Fever Medication Priority 2" name="FeverMedication2" typeRef="string" biodi:width="192">
+        <outputValues id="UnaryTests_1ch2qly">
+          <text>"Teemischung Linden-Holunderblüten","DOLO SPEDIFEN forte Filmtabl 400 mg","DOLO SPEDIFEN Tabl 200 mg","Denosol Erkältungsbad","Selomida Erkältung","Similasan Grippe und Erkältung"</text>
+        </outputValues>
+      </output>
+      <output id="OutputClause_0fzvowb" label="Nasal Medication1" name="NasalMedication1" typeRef="string">
+        <outputValues id="UnaryTests_00t6dnl">
+          <text>"Nasensalbe Rüedi Spirig HC","TRIOFAN Schnupfen o Kons Spray Erw/Kind","Weleda-Schnupfencrème","Triomer Sinomarin Nasenspray","Euphorbium compositum Heel","Emser Nasenspülsalz"</text>
+        </outputValues>
+      </output>
+      <output id="OutputClause_0u54lxe" label="Nasal Medication2" name="NasalMedication2" typeRef="string" biodi:width="192">
+        <outputValues id="UnaryTests_1okc3is">
+          <text>"Nasensalbe Rüedi Spirig HC","TRIOFAN Schnupfen o Kons Spray Erw/Kind","Weleda-Schnupfencrème","Triomer Sinomarin Nasenspray","Euphorbium compositum Heel","Emser Nasenspülsalz"</text>
+        </outputValues>
+      </output>
+      <output id="OutputClause_1o6opnm" label="Throat Medication" name="ThroatMedication" typeRef="string">
+        <outputValues id="UnaryTests_0ugvq2m">
+          <text>"Strepsils Dolo Lutschtabl","Emser Pastillen","Spagyrom® Lutschtabletten"</text>
+        </outputValues>
+      </output>
+      <output id="OutputClause_1indwo2" label="Cough Medication" name="CoughMedication" typeRef="string">
+        <outputValues id="UnaryTests_0bsa23a">
+          <text>"Solmucol Brausetabl 600 mg","NeoCitran Hustenstiller Sirup","Prospan","Honig","Drosetux"</text>
+        </outputValues>
+      </output>
+      <rule id="DecisionRule_1nk4n29">
+        <inputEntry id="UnaryTests_14gq3at">
+          <text>"Conventional medicine"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0h8rd3p">
+          <text>"Yes low fever (between 37.5 and 38.5 degrees)"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_113h0rl">
+          <text>"Sore nose","Blocked nose"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_02le89v">
+          <text>"Sore throat","Swallowing pain"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0obhho9">
+          <text>"Dry cough (nothing is coming out of the mouth during or after coughing)"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0ziv0jg">
+          <text>"Teemischung Linden-Holunderblüten"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0f1gxdw">
+          <text>"DOLO SPEDIFEN Tabl 200 mg"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0w8uobe">
+          <text>"Triomer Sinomarin Nasenspray"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1ln2onx">
+          <text>"Weleda-Schnupfencrème"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1upuw5m">
+          <text>"Strepsils Dolo Lutschtabl"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0a1rhef">
+          <text>"NeoCitran Hustenstiller Sirup"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_08w3ojc">
+        <inputEntry id="UnaryTests_02z0wkk">
+          <text>"Conventional medicine"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0hdmpmk">
+          <text>"Yes low fever (between 37.5 and 38.5 degrees)"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1ot0bov">
+          <text>"Sore nose","Blocked nose"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_15ab1nb">
+          <text>"Sore throat","Swallowing pain"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_07s1euv">
+          <text>"Cough with mucus"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0ji3w2p">
+          <text>"Teemischung Linden-Holunderblüten"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_080jx86">
+          <text>"DOLO SPEDIFEN Tabl 200 mg"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1txthxc">
+          <text>"Triomer Sinomarin Nasenspray"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0mf5a9h">
+          <text>"Weleda-Schnupfencrème"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_06bibm8">
+          <text>"Strepsils Dolo Lutschtabl"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1gslswf">
+          <text>"Solmucol Brausetabl 600 mg"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1ec4p5v">
+        <inputEntry id="UnaryTests_16efpug">
+          <text>"Conventional medicine"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1e2kucz">
+          <text>"Yes low fever (between 37.5 and 38.5 degrees)"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1q2gr0h">
+          <text>"Sore nose","Blocked nose"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1o8rjw8">
+          <text>"Sore throat","Swallowing pain"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1ks9baf">
+          <text>"I have no coughing"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1n909ef">
+          <text>"Teemischung Linden-Holunderblüten"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0rroxn8">
+          <text>"DOLO SPEDIFEN Tabl 200 mg"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0p4i47o">
+          <text>"Triomer Sinomarin Nasenspray"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1koat89">
+          <text>"Weleda-Schnupfencrème"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1iu8wro">
+          <text>"Strepsils Dolo Lutschtabl"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0nysdev">
+          <text></text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0c75vvi">
+        <inputEntry id="UnaryTests_0n8je8c">
+          <text>"Conventional medicine"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0hjgvtk">
+          <text>"Yes low fever (between 37.5 and 38.5 degrees)"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_11y7ffi">
+          <text>"I have no problem with my nose"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1di3rag">
+          <text>"Sore throat","Swallowing pain"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_16d0qv2">
+          <text>"Dry cough (nothing is coming out of the mouth during or after coughing)"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1w98fx6">
+          <text>"Teemischung Linden-Holunderblüten"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1x3gph2">
+          <text>"DOLO SPEDIFEN Tabl 200 mg"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1rx2iat">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1mn130c">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0vg0qfu">
+          <text>"Strepsils Dolo Lutschtabl"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1kaw0ux">
+          <text>"NeoCitran Hustenstiller Sirup"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_101a5y7">
+        <inputEntry id="UnaryTests_0knoisk">
+          <text>"Conventional medicine"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0x4kf4h">
+          <text>"Yes low fever (between 37.5 and 38.5 degrees)"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0ayz24q">
+          <text>"I have no problem with my nose"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0b7m368">
+          <text>"Sore throat","Swallowing pain"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0bceyzd">
+          <text>"Cough with mucus"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_13zwr2g">
+          <text>"Teemischung Linden-Holunderblüten"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0lrypl4">
+          <text>"DOLO SPEDIFEN Tabl 200 mg"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1531z3o">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_09nbnau">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0a2l951">
+          <text>"Strepsils Dolo Lutschtabl"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_055sbqa">
+          <text>"Solmucol Brausetabl 600 mg"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1i8i7s7">
+        <inputEntry id="UnaryTests_17hl5mx">
+          <text>"Conventional medicine"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1koq03a">
+          <text>"Yes low fever (between 37.5 and 38.5 degrees)"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1g64wzh">
+          <text>"I have no problem with my nose"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0wx5b4q">
+          <text>"Sore throat","Swallowing pain"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_170u827">
+          <text>"I have no coughing"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0qajokr">
+          <text>"Teemischung Linden-Holunderblüten"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0fpmojv">
+          <text>"DOLO SPEDIFEN Tabl 200 mg"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1abjac0">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0erb2vt">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0lm3fks">
+          <text>"Strepsils Dolo Lutschtabl"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_09y5mh0">
+          <text></text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_01pxuz5">
+        <inputEntry id="UnaryTests_1bddywm">
+          <text>"Conventional medicine"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_10xrafi">
+          <text>"Yes low fever (between 37.5 and 38.5 degrees)"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_054rkwu">
+          <text>"Sore nose","Blocked nose"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0e46ogy">
+          <text>"I have no problem with my throat"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0ly60ys">
+          <text>"Dry cough (nothing is coming out of the mouth during or after coughing)"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0q4nhxo">
+          <text>"Teemischung Linden-Holunderblüten"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_15j9y6k">
+          <text>"DOLO SPEDIFEN Tabl 200 mg"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1tic0a7">
+          <text>"Triomer Sinomarin Nasenspray"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0iztjsb">
+          <text>"Weleda-Schnupfencrème"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1x4r06l">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0l3a6xj">
+          <text>"NeoCitran Hustenstiller Sirup"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1c99n5q">
+        <inputEntry id="UnaryTests_0ey9vmp">
+          <text>"Conventional medicine"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0rljcgk">
+          <text>"Yes low fever (between 37.5 and 38.5 degrees)"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0c8nyxo">
+          <text>"Sore nose","Blocked nose"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0mnjajs">
+          <text>"I have no problem with my throat"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0upau8w">
+          <text>"Cough with mucus"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1aqay5h">
+          <text>"Teemischung Linden-Holunderblüten"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_03gluef">
+          <text>"DOLO SPEDIFEN Tabl 200 mg"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1gyetpg">
+          <text>"Triomer Sinomarin Nasenspray"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1oid385">
+          <text>"Weleda-Schnupfencrème"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0m9om9w">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0k1b8ww">
+          <text>"Solmucol Brausetabl 600 mg"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_068mvn9">
+        <inputEntry id="UnaryTests_1mia5s5">
+          <text>"Conventional medicine"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1llw7tx">
+          <text>"Yes low fever (between 37.5 and 38.5 degrees)","No (below 37.5 degrees)"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1d4g79v">
+          <text>"Sore nose","Blocked nose"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0lnufbk">
+          <text>"I have no problem with my throat"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_06hid1o">
+          <text>"I have no coughing"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0q6i2h4">
+          <text>"Teemischung Linden-Holunderblüten"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_13k0blr">
+          <text>"DOLO SPEDIFEN Tabl 200 mg"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1lsjmch">
+          <text>"Triomer Sinomarin Nasenspray"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0zio4pm">
+          <text>"Weleda-Schnupfencrème"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0stjpxq">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1y06i6c">
+          <text></text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0b1quzx">
+        <inputEntry id="UnaryTests_18y7bko">
+          <text>"Conventional medicine"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1lvo53d">
+          <text>"Yes low fever (between 37.5 and 38.5 degrees)"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_01pwym9">
+          <text>"I have no problem with my nose"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1idhady">
+          <text>"I have no problem with my throat"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1nvv5o6">
+          <text>"Dry cough (nothing is coming out of the mouth during or after coughing)"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_19p1len">
+          <text>"Teemischung Linden-Holunderblüten"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0ku105i">
+          <text>"DOLO SPEDIFEN Tabl 200 mg"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1asx5g2">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1bxhghb">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_18un89w">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0wfvy21">
+          <text>"NeoCitran Hustenstiller Sirup"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1rdrm3z">
+        <inputEntry id="UnaryTests_0oozfca">
+          <text>"Conventional medicine"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0j28gdp">
+          <text>"Yes low fever (between 37.5 and 38.5 degrees)"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1j42acu">
+          <text>"I have no problem with my nose"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0gj09pv">
+          <text>"I have no problem with my throat"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0sjum6k">
+          <text>"Cough with mucus"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1uu7hvl">
+          <text>"Teemischung Linden-Holunderblüten"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0pc4frx">
+          <text>"DOLO SPEDIFEN Tabl 200 mg"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_161pp7p">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0o3ve3q">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1fwdnf6">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_17qds10">
+          <text>"Solmucol Brausetabl 600 mg"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0es1mo6">
+        <inputEntry id="UnaryTests_0v6tkwt">
+          <text>"Conventional medicine"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_154f4sp">
+          <text>"Yes low fever (between 37.5 and 38.5 degrees)"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1wxp2ui">
+          <text>"I have no problem with my nose"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_08j12ff">
+          <text>"I have no problem with my throat"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0f2sj7f">
+          <text>"I have no coughing"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1cg4v5p">
+          <text>"Teemischung Linden-Holunderblüten"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0tdqoe8">
+          <text>"DOLO SPEDIFEN Tabl 200 mg"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1sejtae">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0720ppe">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_148er34">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_10ufjlh">
+          <text></text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1k1fyc5">
+        <inputEntry id="UnaryTests_1b136m4">
+          <text>"Conventional medicine"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0hj0v9g">
+          <text>"No (below 37.5 degrees)"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_07ci5wo">
+          <text>"Sore nose","Blocked nose"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1ugfhrw">
+          <text>"Sore throat","Swallowing pain"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0c2efnl">
+          <text>"Dry cough (nothing is coming out of the mouth during or after coughing)"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_009hnpl">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1mnz5bn">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1py9c35">
+          <text>"Triomer Sinomarin Nasenspray"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0txfszi">
+          <text>"Weleda-Schnupfencrème"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1mngp14">
+          <text>"Strepsils Dolo Lutschtabl"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0kjhgyj">
+          <text>"NeoCitran Hustenstiller Sirup"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_09v3w2c">
+        <inputEntry id="UnaryTests_1p8htv3">
+          <text>"Conventional medicine"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_050frhe">
+          <text>"No (below 37.5 degrees)"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_01a2hp6">
+          <text>"Sore nose","Blocked nose"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0ppfmju">
+          <text>"Sore throat","Swallowing pain"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_11xxbs3">
+          <text>"Cough with mucus"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0aj4636">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0poosu8">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1k23ubi">
+          <text>"Triomer Sinomarin Nasenspray"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1xkomk5">
+          <text>"Weleda-Schnupfencrème"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_03476y8">
+          <text>"Strepsils Dolo Lutschtabl"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1arv8dh">
+          <text>"Solmucol Brausetabl 600 mg"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0vfwpjv">
+        <inputEntry id="UnaryTests_13usmxn">
+          <text>"Conventional medicine"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_07549y1">
+          <text>"No (below 37.5 degrees)"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_19hgbvb">
+          <text>"Sore nose","Blocked nose"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_04kzwjk">
+          <text>"Sore throat","Swallowing pain"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0pg7vqd">
+          <text>"I have no coughing"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1hbtmea">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1o3s3ar">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1ogl4e6">
+          <text>"Triomer Sinomarin Nasenspray"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1hxmyfs">
+          <text>"Weleda-Schnupfencrème"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_02g3v7u">
+          <text>"Strepsils Dolo Lutschtabl"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_19iffo1">
+          <text></text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0c63txu">
+        <inputEntry id="UnaryTests_14fqg55">
+          <text>"Conventional medicine"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0pxh44s">
+          <text>"No (below 37.5 degrees)"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1ovjcqg">
+          <text>"I have no problem with my nose"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1lrqnhk">
+          <text>"Sore throat","Swallowing pain"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1mpfb1o">
+          <text>"Dry cough (nothing is coming out of the mouth during or after coughing)"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_185mtz6">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0ndgaeq">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1no87wf">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0kbkfd2">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_18o45p0">
+          <text>"Strepsils Dolo Lutschtabl"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_09wdp27">
+          <text>"NeoCitran Hustenstiller Sirup"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_07noqwb">
+        <inputEntry id="UnaryTests_0tx6nlz">
+          <text>"Conventional medicine"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0cjnxra">
+          <text>"No (below 37.5 degrees)"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_045sp55">
+          <text>"I have no problem with my nose"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_08ai1sj">
+          <text>"Sore throat","Swallowing pain"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_01y94oc">
+          <text>"Cough with mucus"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_17uz47m">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0lsnzem">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0mwk7je">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1bkt4q7">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0buexwt">
+          <text>"Strepsils Dolo Lutschtabl"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0cpkyeg">
+          <text>"Solmucol Brausetabl 600 mg"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1og4179">
+        <inputEntry id="UnaryTests_054qog0">
+          <text>"Conventional medicine"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0penr12">
+          <text>"No (below 37.5 degrees)"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0c1nj9j">
+          <text>"I have no problem with my nose"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_10pnor1">
+          <text>"Sore throat","Swallowing pain"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_15npdob">
+          <text>"I have no coughing"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1gg38sh">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1wcb3d5">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_111qib9">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0hvo7sr">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0o1uxws">
+          <text>"Strepsils Dolo Lutschtabl"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0zbeluq">
+          <text></text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_16wznwr">
+        <inputEntry id="UnaryTests_19pwxcx">
+          <text>"Conventional medicine"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1abj7mu">
+          <text>"No (below 37.5 degrees)"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1vbpz4g">
+          <text>"Sore nose","Blocked nose"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1mrvb90">
+          <text>"I have no problem with my throat"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0v7ar2q">
+          <text>"Dry cough (nothing is coming out of the mouth during or after coughing)"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1uxg53i">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1fwcey2">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1bv6wot">
+          <text>"Triomer Sinomarin Nasenspray"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_17xlaz8">
+          <text>"Weleda-Schnupfencrème"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1ba4jct">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_09nri05">
+          <text>"NeoCitran Hustenstiller Sirup"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0fnm51q">
+        <inputEntry id="UnaryTests_0ek2vy7">
+          <text>"Conventional medicine"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1wfui3r">
+          <text>"No (below 37.5 degrees)"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_010npxw">
+          <text>"Sore nose","Blocked nose"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_06s6grd">
+          <text>"I have no problem with my throat"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1juhjpd">
+          <text>"Cough with mucus"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1jrbxci">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_10kogro">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1gcss24">
+          <text>"Triomer Sinomarin Nasenspray"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0j811j5">
+          <text>"Weleda-Schnupfencrème"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0tlx6rk">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1kh1etu">
+          <text>"Solmucol Brausetabl 600 mg"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_014gmkf">
+        <inputEntry id="UnaryTests_04duy2s">
+          <text>"Conventional medicine"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_18t0x9s">
+          <text>"No (below 37.5 degrees)"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1om6qat">
+          <text>"Sore nose","Blocked nose"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1k8nhub">
+          <text>"I have no problem with my throat"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0zy5qzy">
+          <text>"I have no coughing"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0z5sv7h">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0crcezi">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0rti1dc">
+          <text>"Triomer Sinomarin Nasenspray"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0cvxt3e">
+          <text>"Weleda-Schnupfencrème"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1h1irq5">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1okkiem">
+          <text></text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_05ibe7g">
+        <inputEntry id="UnaryTests_0sy0970">
+          <text>"Conventional medicine"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0zlf1k3">
+          <text>"No (below 37.5 degrees)"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1z096te">
+          <text>"I have no problem with my nose"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0lvmsdn">
+          <text>"I have no problem with my throat"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_17rxzyj">
+          <text>"Dry cough (nothing is coming out of the mouth during or after coughing)"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0kofmzc">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1vhmx30">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1hssixc">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0ahyej9">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1vmbd6f">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1xfegzv">
+          <text>"NeoCitran Hustenstiller Sirup"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0qb6lj5">
+        <inputEntry id="UnaryTests_15kv5n1">
+          <text>"Conventional medicine"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0wtujlb">
+          <text>"No (below 37.5 degrees)"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1yvi6p9">
+          <text>"I have no problem with my nose"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_12a5eem">
+          <text>"I have no problem with my throat"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0bnn925">
+          <text>"Cough with mucus"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_162k6va">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1ecczwi">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_13sf8p2">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_04cu0jp">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1nofnfe">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1ctnrn1">
+          <text>"Solmucol Brausetabl 600 mg"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1cetotr">
+        <inputEntry id="UnaryTests_0ai9ump">
+          <text>"Conventional medicine"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_071f413">
+          <text>"No (below 37.5 degrees)"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1gynxre">
+          <text>"I have no problem with my nose"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_09fqnym">
+          <text>"I have no problem with my throat"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1gb9lhq">
+          <text>"I have no coughing"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0exan05">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1c9bctr">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0aray6i">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0llk7un">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1x85cua">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0pih73m">
+          <text></text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <dmndi:DMNDI>
+    <dmndi:DMNDiagram>
+      <dmndi:DMNShape id="DMNShape_1pefkcc" dmnElementRef="Decision_137qi22">
+        <dc:Bounds height="80" width="180" x="400" y="110" />
+      </dmndi:DMNShape>
+    </dmndi:DMNDiagram>
+  </dmndi:DMNDI>
+</definitions>
