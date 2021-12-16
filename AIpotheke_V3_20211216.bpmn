@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_0nkczwl" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="4.11.1" modeler:executionPlatform="Camunda Platform" modeler:executionPlatformVersion="7.15.0">
+  <bpmn:collaboration id="Collaboration_04ibfu0">
+    <bpmn:participant id="Participant_068z4yp" name="AIPotheke" processRef="AIpothke" />
+    <bpmn:participant id="Participant_0rhcyv8" name="Customer" />
+    <bpmn:participant id="Participant_0l7fibm" name="BD ROWA" />
+    <bpmn:messageFlow id="Flow_1q1ip7r" sourceRef="Participant_0rhcyv8" targetRef="GoogleFormsData" />
+    <bpmn:messageFlow id="Flow_1yo76bt" sourceRef="Activity_1rjwcsi" targetRef="Participant_0l7fibm" />
+    <bpmn:messageFlow id="Flow_1e2iwmo" sourceRef="Participant_0l7fibm" targetRef="Activity_1rjwcsi" />
+  </bpmn:collaboration>
+  <bpmn:process id="AIpothke" isExecutable="true">
+    <bpmn:sequenceFlow id="Flow_0vdldzt" sourceRef="Activity_0x2ewbe" targetRef="Activity_1rjwcsi" />
+    <bpmn:sequenceFlow id="Flow_1bqmrli" sourceRef="GoogleFormsData" targetRef="Activity_17qhfb1" />
+    <bpmn:sequenceFlow id="Flow_12hduvz" sourceRef="Activity_17qhfb1" targetRef="Gateway_0buwwan" />
+    <bpmn:sequenceFlow id="Flow_000gn0a" name="No" sourceRef="Gateway_0buwwan" targetRef="Activity_0p17w5n">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${consultationchannel == "NOpharmacistconsultation"}</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_0jlzx0n" name="Yes" sourceRef="Gateway_0buwwan" targetRef="Activity_1ihytgn">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${consultationchannel == "pharmacistconsultation"}</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_1i7x4np" sourceRef="Activity_1ihytgn" targetRef="Activity_01y3248" />
+    <bpmn:sequenceFlow id="Flow_1ambo05" sourceRef="Activity_0p17w5n" targetRef="Activity_0x2ewbe" />
+    <bpmn:startEvent id="GoogleFormsData" name="Receive Google Forms Data">
+      <bpmn:outgoing>Flow_1bqmrli</bpmn:outgoing>
+      <bpmn:messageEventDefinition id="MessageEventDefinition_01ecdgb" messageRef="Message_1pvwc3z" />
+    </bpmn:startEvent>
+    <bpmn:sequenceFlow id="Flow_1ys91k3" sourceRef="Activity_01y3248" targetRef="Event_0y279bj" />
+    <bpmn:businessRuleTask id="Activity_17qhfb1" name="Decide Consultation Channel" camunda:resultVariable="consultationchannel" camunda:decisionRef="Decision_1ov0kff" camunda:mapDecisionResult="singleResult">
+      <bpmn:extensionElements>
+        <camunda:inputOutput>
+          <camunda:outputParameter name="consultationchannel">${consultationchannel.pharmacistdecision}</camunda:outputParameter>
+        </camunda:inputOutput>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1bqmrli</bpmn:incoming>
+      <bpmn:outgoing>Flow_12hduvz</bpmn:outgoing>
+    </bpmn:businessRuleTask>
+    <bpmn:exclusiveGateway id="Gateway_0buwwan" name="Pharmacist consultation necessary?">
+      <bpmn:incoming>Flow_12hduvz</bpmn:incoming>
+      <bpmn:outgoing>Flow_000gn0a</bpmn:outgoing>
+      <bpmn:outgoing>Flow_0jlzx0n</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:businessRuleTask id="Activity_0p17w5n" name="Recommend Drugs" camunda:resultVariable="medicationdecision" camunda:decisionRef="Decision_137qi22" camunda:mapDecisionResult="singleResult">
+      <bpmn:extensionElements>
+        <camunda:inputOutput>
+          <camunda:outputParameter name="NasalMedication2">${medicationdecision.NasalMedication2}</camunda:outputParameter>
+          <camunda:outputParameter name="CoughMedication">${medicationdecision.CoughMedication}</camunda:outputParameter>
+          <camunda:outputParameter name="ThroatMedication">${medicationdecision.ThroatMedication}</camunda:outputParameter>
+          <camunda:outputParameter name="NasalMedication1">${medicationdecision.NasalMedication1}</camunda:outputParameter>
+          <camunda:outputParameter name="FeverMedication2">${medicationdecision.FeverMedication2}</camunda:outputParameter>
+          <camunda:outputParameter name="FeverMedication1">${medicationdecision.FeverMedication1}</camunda:outputParameter>
+        </camunda:inputOutput>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_000gn0a</bpmn:incoming>
+      <bpmn:outgoing>Flow_1ambo05</bpmn:outgoing>
+    </bpmn:businessRuleTask>
+    <bpmn:userTask id="Activity_1ihytgn" name="Receive Data">
+      <bpmn:extensionElements>
+        <camunda:formData>
+          <camunda:formField id="illness" label="Sort of illness" type="string">
+            <camunda:validation>
+              <camunda:constraint name="readonly" />
+            </camunda:validation>
+          </camunda:formField>
+          <camunda:formField id="age" label="Age" type="string">
+            <camunda:validation>
+              <camunda:constraint name="readonly" />
+            </camunda:validation>
+          </camunda:formField>
+          <camunda:formField id="othermed" label="Other Medication" type="string">
+            <camunda:validation>
+              <camunda:constraint name="readonly" />
+            </camunda:validation>
+          </camunda:formField>
+          <camunda:formField id="pain" label="Pain" type="string">
+            <camunda:validation>
+              <camunda:constraint name="readonly" />
+            </camunda:validation>
+          </camunda:formField>
+          <camunda:formField id="fever" label="Fever" type="string">
+            <camunda:validation>
+              <camunda:constraint name="readonly" />
+            </camunda:validation>
+          </camunda:formField>
+          <camunda:formField id="cough2" label="Cough Red Flags" type="string">
+            <camunda:validation>
+              <camunda:constraint name="readonly" />
+            </camunda:validation>
+          </camunda:formField>
+          <camunda:formField id="cough1" label="Cough Type" type="string">
+            <camunda:validation>
+              <camunda:constraint name="readonly" />
+            </camunda:validation>
+          </camunda:formField>
+          <camunda:formField id="nasal" label="Nasal symptoms" type="string">
+            <camunda:validation>
+              <camunda:constraint name="readonly" />
+            </camunda:validation>
+          </camunda:formField>
+          <camunda:formField id="throat" label="Throat symptoms" type="string">
+            <camunda:validation>
+              <camunda:constraint name="readonly" />
+            </camunda:validation>
+          </camunda:formField>
+          <camunda:formField id="treatpref" label="Treatment Preferences" type="string">
+            <camunda:validation>
+              <camunda:constraint name="readonly" />
+            </camunda:validation>
+          </camunda:formField>
+        </camunda:formData>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0jlzx0n</bpmn:incoming>
+      <bpmn:outgoing>Flow_1i7x4np</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:userTask id="Activity_01y3248" name="Print ticket">
+      <bpmn:incoming>Flow_1i7x4np</bpmn:incoming>
+      <bpmn:outgoing>Flow_1ys91k3</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:endEvent id="Event_0xkrh25">
+      <bpmn:incoming>Flow_0vrno1w</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:endEvent id="Event_0y279bj">
+      <bpmn:incoming>Flow_1ys91k3</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_0vrno1w" sourceRef="Activity_1rjwcsi" targetRef="Event_0xkrh25" />
+    <bpmn:userTask id="Activity_0x2ewbe" name="Chose Drugs">
+      <bpmn:extensionElements>
+        <camunda:formData>
+          <camunda:formField id="NasalMedication2" label="Nasal Ointment " type="string" />
+          <camunda:formField id="NasalMedication1" label="Nasal Spray" type="string" />
+          <camunda:formField id="FeverMedication1" label="Tea for a Cold" type="string" />
+          <camunda:formField id="FeverMedication2" label="Antipyretic Medication" type="string" />
+          <camunda:formField id="ThroatMedication" label="Throat Medication" type="string" />
+          <camunda:formField id="CoughMedication" label="Cough Medication" type="string" />
+          <camunda:formField id="AdditionalMedication " label="Additional Medication" type="string" />
+        </camunda:formData>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1ambo05</bpmn:incoming>
+      <bpmn:outgoing>Flow_0vdldzt</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:serviceTask id="Activity_1rjwcsi" name="Deliver Medication (BD ROWA)">
+      <bpmn:incoming>Flow_0vdldzt</bpmn:incoming>
+      <bpmn:outgoing>Flow_0vrno1w</bpmn:outgoing>
+    </bpmn:serviceTask>
+  </bpmn:process>
+  <bpmn:message id="Message_1pvwc3z" name="testmessage" />
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Collaboration_04ibfu0">
+      <bpmndi:BPMNShape id="Participant_068z4yp_di" bpmnElement="Participant_068z4yp" isHorizontal="true">
+        <dc:Bounds x="129" y="290" width="981" height="280" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_0vdldzt_di" bpmnElement="Flow_0vdldzt">
+        <di:waypoint x="760" y="397" />
+        <di:waypoint x="810" y="397" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1bqmrli_di" bpmnElement="Flow_1bqmrli">
+        <di:waypoint x="238" y="397" />
+        <di:waypoint x="280" y="397" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_12hduvz_di" bpmnElement="Flow_12hduvz">
+        <di:waypoint x="380" y="397" />
+        <di:waypoint x="415" y="397" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_000gn0a_di" bpmnElement="Flow_000gn0a">
+        <di:waypoint x="465" y="397" />
+        <di:waypoint x="530" y="397" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="477" y="379" width="15" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0jlzx0n_di" bpmnElement="Flow_0jlzx0n">
+        <di:waypoint x="440" y="422" />
+        <di:waypoint x="440" y="510" />
+        <di:waypoint x="530" y="510" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="476" y="523" width="18" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1i7x4np_di" bpmnElement="Flow_1i7x4np">
+        <di:waypoint x="630" y="510" />
+        <di:waypoint x="690" y="510" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1ambo05_di" bpmnElement="Flow_1ambo05">
+        <di:waypoint x="630" y="397" />
+        <di:waypoint x="660" y="397" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1ys91k3_di" bpmnElement="Flow_1ys91k3">
+        <di:waypoint x="790" y="510" />
+        <di:waypoint x="1012" y="510" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0vrno1w_di" bpmnElement="Flow_0vrno1w">
+        <di:waypoint x="910" y="397" />
+        <di:waypoint x="1012" y="397" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Event_0vfr1h0_di" bpmnElement="GoogleFormsData">
+        <dc:Bounds x="202" y="379" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="181" y="422" width="79" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1feenrx_di" bpmnElement="Activity_17qhfb1">
+        <dc:Bounds x="280" y="357" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_0buwwan_di" bpmnElement="Gateway_0buwwan" isMarkerVisible="true">
+        <dc:Bounds x="415" y="372" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="410" y="322" width="59" height="40" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_002qp1y_di" bpmnElement="Activity_0p17w5n">
+        <dc:Bounds x="530" y="357" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_11jrwnx_di" bpmnElement="Activity_1ihytgn">
+        <dc:Bounds x="530" y="470" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0p2dzmd_di" bpmnElement="Activity_01y3248">
+        <dc:Bounds x="690" y="470" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0xkrh25_di" bpmnElement="Event_0xkrh25">
+        <dc:Bounds x="1012" y="379" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0y279bj_di" bpmnElement="Event_0y279bj">
+        <dc:Bounds x="1012" y="492" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0wmua78_di" bpmnElement="Activity_0x2ewbe">
+        <dc:Bounds x="660" y="357" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_02slh2f_di" bpmnElement="Activity_1rjwcsi">
+        <dc:Bounds x="810" y="357" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Participant_19vhccx_di" bpmnElement="Participant_0rhcyv8" isHorizontal="true">
+        <dc:Bounds x="129" y="200" width="981" height="60" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Participant_13kksc4_di" bpmnElement="Participant_0l7fibm" isHorizontal="true">
+        <dc:Bounds x="129" y="110" width="981" height="60" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_1q1ip7r_di" bpmnElement="Flow_1q1ip7r">
+        <di:waypoint x="220" y="264" />
+        <di:waypoint x="220" y="379" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1yo76bt_di" bpmnElement="Flow_1yo76bt">
+        <di:waypoint x="838" y="356" />
+        <di:waypoint x="838" y="170" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1e2iwmo_di" bpmnElement="Flow_1e2iwmo">
+        <di:waypoint x="887" y="170" />
+        <di:waypoint x="887" y="350" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

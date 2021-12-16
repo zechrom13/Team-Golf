@@ -1,0 +1,379 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" id="Definitions_0h322i9" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="4.11.1">
+  <decision id="Decision_1ov0kff" name="PharmacistDecision">
+    <decisionTable id="DecisionTable_1e7t2p2" hitPolicy="ANY">
+      <input id="Input_1" label="illness">
+        <inputExpression id="InputExpression_1" typeRef="string">
+          <text>illness</text>
+        </inputExpression>
+        <inputValues id="UnaryTests_10xq3ec">
+          <text>"Common cold","Pain","Urinary tract infection","Allergy","Sleep disorder","More than one of the above","Other"</text>
+        </inputValues>
+      </input>
+      <input id="InputClause_1yuch6j" label="age">
+        <inputExpression id="LiteralExpression_119krl8" typeRef="string">
+          <text>age</text>
+        </inputExpression>
+        <inputValues id="UnaryTests_1tefber">
+          <text>"&lt; 18","&gt;= 18"</text>
+        </inputValues>
+      </input>
+      <input id="InputClause_1ddoc6b" label="othermed">
+        <inputExpression id="LiteralExpression_1q3ete5" typeRef="string">
+          <text>othermed</text>
+        </inputExpression>
+        <inputValues id="UnaryTests_0pauvlt">
+          <text>"Yes","No"</text>
+        </inputValues>
+      </input>
+      <input id="InputClause_1jntm09" label="pain">
+        <inputExpression id="LiteralExpression_065lxub" typeRef="string">
+          <text>pain</text>
+        </inputExpression>
+        <inputValues id="UnaryTests_11zal5i">
+          <text>"No","Yes"</text>
+        </inputValues>
+      </input>
+      <input id="InputClause_0h12pd5" label="fever" biodi:width="193">
+        <inputExpression id="LiteralExpression_018nivv" typeRef="string">
+          <text>fever</text>
+        </inputExpression>
+        <inputValues id="UnaryTests_1evfkyx">
+          <text>"No (below 37.5 degrees)","Yes low fever (between 37.5 and 38.5 degrees)","Yes high fever (over 38.5 degrees)"</text>
+        </inputValues>
+      </input>
+      <input id="InputClause_05pt47l" label="cough2">
+        <inputExpression id="LiteralExpression_1cspueo" typeRef="string">
+          <text>cough2</text>
+        </inputExpression>
+        <inputValues id="UnaryTests_1ywyxpn">
+          <text>"Yes","No"</text>
+        </inputValues>
+      </input>
+      <input id="InputClause_0mj8skk" label="cough1">
+        <inputExpression id="LiteralExpression_1gentey" typeRef="string">
+          <text>cough1</text>
+        </inputExpression>
+        <inputValues id="UnaryTests_0ka0lyy">
+          <text>"I have no coughing","Dry cough (nothing is coming out of the mouth during or after coughing)","Cough with mucus"</text>
+        </inputValues>
+      </input>
+      <input id="InputClause_0maxmyt" label="nasal" biodi:width="192">
+        <inputExpression id="LiteralExpression_0r98njf" typeRef="string">
+          <text>nasal</text>
+        </inputExpression>
+        <inputValues id="UnaryTests_1a20gui">
+          <text>"I have no problem with my nose","Sore nose","Blocked nose"</text>
+        </inputValues>
+      </input>
+      <input id="InputClause_001c7cc" label="throat">
+        <inputExpression id="LiteralExpression_02p2jhq" typeRef="string">
+          <text>throat</text>
+        </inputExpression>
+        <inputValues id="UnaryTests_1b7gzje">
+          <text>"I have no problem with my throat","Sore throat","Swallowing pain"</text>
+        </inputValues>
+      </input>
+      <input id="InputClause_0phz32l" label="treatpref">
+        <inputExpression id="LiteralExpression_080gzl4" typeRef="string">
+          <text>treatpref</text>
+        </inputExpression>
+        <inputValues id="UnaryTests_0kvcz2n">
+          <text>"Conventional medicine","Herbal medicine","Homeopathic medicine"</text>
+        </inputValues>
+      </input>
+      <output id="Output_1" label="pharmacistdecision" name="pharmacistdecision" typeRef="string">
+        <outputValues id="UnaryTests_1towchc">
+          <text>"pharmacistconsultation","NOpharmacistconsultation"</text>
+        </outputValues>
+      </output>
+      <rule id="DecisionRule_0m6hkfj">
+        <inputEntry id="UnaryTests_1y4ef1h">
+          <text>"Pain","Urinary tract infection","Allergy","Sleep disorder","More than one of the above","Other"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1eohkrn">
+          <text>-</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0qgo74c">
+          <text>-</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0wttgyr">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1u450ur">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0mudkl1">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_055u1ck">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_129oh7d">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1lewujs">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_02ldtu1">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0dfmzpz">
+          <text>"pharmacistconsultation"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_104a1gy">
+        <inputEntry id="UnaryTests_1979jjy">
+          <text>"Common cold"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_10crxqp">
+          <text>"&lt; 18"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_02od3cy">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_19prohh">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_08nxoh3">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1nwx39j">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1dawn7q">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_017k74y">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_07y3kek">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0oxhdm2">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_14i6lnt">
+          <text>"pharmacistconsultation"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_141phh8">
+        <inputEntry id="UnaryTests_10l8xuv">
+          <text>"Common cold"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1dyc85h">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1rh1k8p">
+          <text>"Yes"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_18fa4g0">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1g4wi3j">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_01svp8k">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1ir2i60">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0mfq2ks">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1igtvys">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1tbjaaf">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1fnnq77">
+          <text>"pharmacistconsultation"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1kcn238">
+        <inputEntry id="UnaryTests_1yo2lpp">
+          <text>"Common cold"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0ad0jzo">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0nnavsx">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_04rtyui">
+          <text>"Yes"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1oqoi22">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1uu1rmg">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_06fxvh0">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_04q6biu">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0j0p7y5">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0nh9b15">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1f6iybl">
+          <text>"pharmacistconsultation"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0kfuear">
+        <inputEntry id="UnaryTests_0wxjwdc">
+          <text>"Common cold"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1gdn91t">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_179721e">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0w3g96v">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0ljg3pv">
+          <text>"Yes high fever (over 38.5 degrees)"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0bzyeax">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0vw9g14">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_098p8ak">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1689ffh">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0fpv4zo">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_07khqc6">
+          <text>"pharmacistconsultation"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1ovbld9">
+        <inputEntry id="UnaryTests_1otx9v3">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0gio62n">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0ldeabb">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0zud8rw">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0di7pg1">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0nairtc">
+          <text>"Yes"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_018enhb">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_03lpkbb">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1ks9q0l">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0d9rufa">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1nz75td">
+          <text>"pharmacistconsultation"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_02t5351">
+        <inputEntry id="UnaryTests_045l9r4">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_06bl29b">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_072imff">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_17n7ong">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0vhtre9">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1hf96ta">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1fofvz7">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_05ngzc4">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_05443kn">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1mw1408">
+          <text>"Herbal medicine","Homeopathic medicine"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_05dv9rh">
+          <text>"pharmacistconsultation"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0ignu3r">
+        <inputEntry id="UnaryTests_1fzl328">
+          <text>"Common cold"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0gokvbv">
+          <text>"&gt;= 18"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1n2g6se">
+          <text>"No"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_03lupc8">
+          <text>"No"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0y8epr7">
+          <text>"No (below 37.5 degrees)","Yes low fever (between 37.5 and 38.5 degrees)"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_12ktqrx">
+          <text>"No"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0o4pcaw">
+          <text>"I have no coughing","Dry cough (nothing is coming out of the mouth during or after coughing)","Cough with mucus"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_144b6lm">
+          <text>"I have no problem with my nose","Sore nose","Blocked nose"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0d3nd2b">
+          <text>"I have no problem with my throat","Sore throat","Swallowing pain"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0njrb7s">
+          <text>"Conventional medicine"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_159m9ot">
+          <text>"NOpharmacistconsultation"</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <dmndi:DMNDI>
+    <dmndi:DMNDiagram>
+      <dmndi:DMNShape dmnElementRef="Decision_1ov0kff">
+        <dc:Bounds height="80" width="180" x="160" y="100" />
+      </dmndi:DMNShape>
+    </dmndi:DMNDiagram>
+  </dmndi:DMNDI>
+</definitions>
