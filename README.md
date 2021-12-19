@@ -45,11 +45,6 @@ Based on the information from section 1, there are two possible outcomes (treatm
     
     b. Consultation with the pharmacist is needed. A paper ticket with the instance ID is printed for the customer. After an in-person consultation with the pharmacist, the customer can get the drugs needed. Process ends.
 
-## Process Details
-under construction
-Integromat as ISaaS platform for the integration scenario. 
-
-
 ## Process Restrictions
 The following simplifications were made:
 - the payment process was not implemented
@@ -57,7 +52,13 @@ The following simplifications were made:
 - no timer events were built into the process (for example when a customer starts a process at the automated consultation screen but leaves the process at a random point without finishing it)
 
 ## BPMN Model of the Process
-![Bild_2021-12-09_203259](https://github.com/DigiBP/Team-Golf/blob/main/Final%20BPMN.png)
+https://github.com/DigiBP/Team-Golf/blob/e7fc38f122b44648b8dd4b898901827432557bee/Final_PictureBPMN_SICK-OMAT.png 
+
+## Process Details
+### Google Forms
+At the start of the process the customer fills in a form to gather information regarding illness, sympotoms and treatment preferences to provide as the base for the two following automated decisions. The form already contains shortcuts in case a 'red flag symptom' occurs that should be consulted by a person. 
+
+The form can be accessed [here] https://forms.gle/QF4Y9ke4k3DrpKF39 .
 
 
 # Outlook
