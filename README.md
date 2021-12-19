@@ -52,13 +52,16 @@ The following simplifications were made:
 - no timer events were built into the process (for example when a customer starts a process at the automated consultation screen but leaves the process at a random point without finishing it)
 
 ## BPMN Model of the Process
-https://github.com/DigiBP/Team-Golf/blob/e7fc38f122b44648b8dd4b898901827432557bee/Final_PictureBPMN_SICK-OMAT.png 
+![full BPMN model](https://github.com/DigiBP/Team-Golf/blob/e7fc38f122b44648b8dd4b898901827432557bee/Final_PictureBPMN_SICK-OMAT.png)
 
 ## Process Details
 ### Google Forms
 At the start of the process the customer fills in a form to gather information regarding illness, sympotoms and treatment preferences to provide as the base for the two following automated decisions. The form already contains shortcuts in case a 'red flag symptom' occurs that should be consulted by a person. 
 
-The form can be accessed [here] https://forms.gle/QF4Y9ke4k3DrpKF39 .
+The form can be accessed [here](https://forms.gle/QF4Y9ke4k3DrpKF39).
+
+
+###
 
 
 # Outlook
